@@ -1,23 +1,13 @@
 package net.fachpersonal.uno.exceptions;
 
 public class UNOException extends Exception{
-    public enum CustomException{
-        CARD_MISSING_INDEX("No index given! Cannot create new Card!");
+    private UNOERR unoerr;
 
-        private String msg;
-        CustomException (String msg) {
-            this.msg = msg;
-        }
-        public String getErrorMessage() {return msg;}
+    public UNOException(UNOERR ue) {
+        super(ue.getErrorMessage());
+        this.unoerr = ue;
     }
 
-    private CustomException customException;
-
-    public UNOException(CustomException ce) {
-        super(ce.getErrorMessage());
-        this.customException = ce;
-    }
-
-    public CustomException getCustomException() {return customException;}
+    public UNOERR getUnoError() {return unoerr;}
 
 }
