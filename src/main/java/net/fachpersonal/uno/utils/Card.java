@@ -1,19 +1,20 @@
 package net.fachpersonal.uno.utils;
 
+import net.fachpersonal.uno.exceptions.UNOERR;
 import net.fachpersonal.uno.exceptions.UNOException;
 
 public class Card {
-    public enum COLOR {
+    public enum Color {
         RED,
         GREEN,
         BLUE,
         YELLOW,
         SPECIAL;
 
-        public final static COLOR colors[] = values();
+        public final static Color colors[] = values();
     }
 
-    public enum TYPE {
+    public enum Type {
         REVERSE,
         PLUS2,
         PLUS4,
@@ -21,19 +22,19 @@ public class Card {
         SKIP,
         NORMAL;
 
-        public final static TYPE types[] = values();
+        public final static Type types[] = values();
     }
 
-    private COLOR color;
-    private TYPE type;
+    private Color color;
+    private Type type;
 
 
-    public Card (COLOR color, int index) {
+    public Card (Color color, int index) {
         this.color = color;
-        this.type = TYPE.NORMAL;
+        this.type = Type.NORMAL;
 
     }
-    public Card (COLOR color, TYPE type) throws UNOException {
+    public Card (Color color, Type type) throws UNOException {
         switch (type) {
             case REVERSE, PLUS2, SKIP -> {
                 this.color = color;
@@ -41,27 +42,27 @@ public class Card {
                 break;
             }
             case CHANGE_COLOR, PLUS4 -> {
-                this.color = COLOR.SPECIAL;
+                this.color = Color.SPECIAL;
                 this.type = type;
                 break;
             }
             case NORMAL -> {
-                throw new UNOException(UNOException.CustomException.CARD_MISSING_INDEX);
+                throw new UNOException(UNOERR.CARD_MISSING_INDEX);
             }
         }
     }
 
     public static Card newCard() throws UNOException {
-        TYPE type = TYPE.types[(int)Math.floor(Math.random() * 5)];
+        Type type = Type.types[(int)Math.floor(Math.random() * 5)];
         switch (type) {
             case NORMAL -> {
-                return new Card(COLOR.colors[(int) Math.floor(Math.random() * 4)],(int) Math.floor(Math.random()*9));
+                return new Card(Color.colors[(int) Math.floor(Math.random() * 4)],(int) Math.floor(Math.random()*9));
             }
             case SKIP,PLUS2,REVERSE -> {
-                return new Card(COLOR.colors[(int) Math.floor(Math.random() * 4)],type);
+                return new Card(Color.colors[(int) Math.floor(Math.random() * 4)],type);
             }
             case PLUS4, CHANGE_COLOR -> {
-                return new Card(COLOR.SPECIAL, type);
+                return new Card(Color.SPECIAL, type);
             }
         }
         return null;
