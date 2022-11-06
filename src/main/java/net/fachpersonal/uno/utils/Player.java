@@ -1,6 +1,6 @@
-package net.fachpersonal.uno.utils;
+package net.Fachpersonal.uno.utils;
 
-import net.fachpersonal.uno.exceptions.UNOException;
+import net.Fachpersonal.uno.exceptions.UNOException;
 
 import java.util.ArrayList;
 
@@ -18,10 +18,19 @@ public class Player {
         }
     }
 
-    public void takeNewCard() throws UNOException {takeNewCard(0);}
+    public void takeNewCard() throws UNOException {
+        takeNewCard(0);
+    }
 
-    public String getUsername() {return username;}
+    public String getUsername() {
+        return username;
+    }
 
-    public ArrayList<Card> getHand() {return hand;}
-    public void setHand(ArrayList<Card> newHand) {hand = newHand;}
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
+
+    public void setHand(ArrayList<Card> newHand) {
+        hand = newHand;
+    }
 }

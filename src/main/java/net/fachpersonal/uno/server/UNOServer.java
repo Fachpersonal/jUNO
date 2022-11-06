@@ -1,6 +1,4 @@
-package net.fachpersonal.uno.server;
-
-import com.almasb.fxgl.net.Server;
+package net.Fachpersonal.uno.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -9,14 +7,14 @@ import java.util.ArrayList;
 
 public class UNOServer {
 
+    private final ArrayList<ClientHandler> clients;
     private ServerSocket ss;
-    private ArrayList<ClientHandler> clients;
 
     public UNOServer(int port, int max_players) throws IOException {
-        clients = new ArrayList<ClientHandler>();
+        clients = new ArrayList<>();
         ServerSocket ss = new ServerSocket(port);
-        if(max_players == -1) {
-            while(true){
+        if (max_players == -1) {
+            while (true) {
                 assignClient();
             }
         } else {

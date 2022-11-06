@@ -1,4 +1,4 @@
-package net.fachpersonal.uno.server;
+package net.Fachpersonal.uno.server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,15 +8,24 @@ import java.net.Socket;
 
 public class ClientHandler implements Runnable {
 
+    private final Socket socket;
+    private final BufferedReader in;
+    private final PrintWriter out;
+    public ClientHandler(Socket s) throws IOException {
+        this.socket = s;
+        this.in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        this.out = new PrintWriter(s.getOutputStream());
+    }
+
     @Override
     public void run() {
-        while(true) {
+        while (true) {
             break;
         }
         stop();
     }
 
-    public void stop(){
+    public void stop() {
         try {
             in.close();
             out.close();
@@ -24,16 +33,6 @@ public class ClientHandler implements Runnable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private Socket socket;
-    private BufferedReader in;
-    private PrintWriter out;
-
-    public ClientHandler(Socket s) throws IOException {
-        this.socket = s;
-        this.in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        this.out = new PrintWriter(s.getOutputStream());
     }
 
     public String readLine() throws IOException { // Reads what client sends to server

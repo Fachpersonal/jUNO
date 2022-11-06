@@ -1,13 +1,15 @@
-package net.fachpersonal.uno.exceptions;
+package net.Fachpersonal.uno.exceptions;
 
-public class UNOException extends Exception{
-    private UNOERR unoerr;
+public class UNOException extends Exception {
+    private final UNOERR unoerr;
 
     public UNOException(UNOERR ue) {
         super(ue.getErrorMessage());
         this.unoerr = ue;
     }
 
-    public UNOERR getUnoError() {return unoerr;}
+    public UNOERR getUnoError() {
+        return unoerr;
+    }
 
 }
