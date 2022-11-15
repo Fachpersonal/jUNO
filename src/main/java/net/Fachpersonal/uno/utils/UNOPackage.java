@@ -7,6 +7,7 @@ public class UNOPackage {
 
     private final Type type;
     private final String value;
+
     public UNOPackage(Type type, String value) {
         this.type = type;
         this.value = value;
@@ -64,7 +65,6 @@ public class UNOPackage {
     }
 
     public enum Type {
-        INIT,
-        COMMAND
+        INIT, COMMAND
     }
 }

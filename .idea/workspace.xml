@@ -6,6 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="926a6fbd-ec31-46bd-b570-4f09cebd9228" name="Changes" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/exceptions/UNOERR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/exceptions/UNOERR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/exceptions/UNOException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/exceptions/UNOException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/server/UNOServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/UNOServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/utils/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/utils/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/utils/UNOPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/UNOPackage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,13 +36,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="net.Fachpersonal.Main" />
@@ -62,6 +72,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667748613164</updated>
+      <workItem from="1668163810978" duration="439000" />
+      <workItem from="1668164610492" duration="1459000" />
+      <workItem from="1668269748306" duration="60000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1667749095719</created>
@@ -72,6 +85,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

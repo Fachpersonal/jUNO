@@ -13,6 +13,7 @@ public class Client {
 
     private final BufferedReader in;
     private final PrintWriter out;
+
     public Client(String ip, int port) throws IOException {
         Socket s = new Socket(ip, port);
         Scanner sc = new Scanner(System.in);

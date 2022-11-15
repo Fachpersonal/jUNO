@@ -5,21 +5,7 @@ import net.Fachpersonal.uno.exceptions.UNOException;
 
 public class Card {
     private Color color;
-
-    public Color getColor() {
-        return color;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
     private Type type;
-
-    public int getIndex() {
-        return index;
-    }
-
     private int index;
 
     public Card(Color color, int index) {
@@ -57,6 +43,18 @@ public class Card {
             }
         }
         return null;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     public enum Color {
