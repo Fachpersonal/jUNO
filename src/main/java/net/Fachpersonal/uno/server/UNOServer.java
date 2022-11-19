@@ -27,14 +27,8 @@ public class UNOServer {
         connectedPlayers = 0;
         clients = new ArrayList<>();
         ss = new ServerSocket(port);
-        if (max_players == -1) {
-            while (true) {
-                assignClient();
-            }
-        } else {
-            for (int i = 0; i < max_players; i++) {
-                assignClient();
-            }
+        while(connectedPlayers < max_players) {
+            assignClient();
         }
     }
 
@@ -45,7 +39,7 @@ public class UNOServer {
     private void assignClient() throws IOException, UNOException {
         Socket s = ss.accept();
         System.out.println("Client connected!");
-        ClientHandler ch = new ClientHandler(s);
+        ClientHandler ch = new ClientHandler(s, this);
         clients.add(ch);
         new Thread(ch).start();
         connectedPlayers++;
