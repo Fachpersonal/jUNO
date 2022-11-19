@@ -40,8 +40,13 @@ public class Client {
         gameLoop();
     }
 
+
+    private void gameLoop() {
+
+    }
+
     public static void main(String[] args) throws IOException {
-        new Client("172.30.3.38", 25565);
+        new Client("localhost", 12345);
     }
 
     private void write(String msg) { // writes to server
