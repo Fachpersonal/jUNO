@@ -11,11 +11,13 @@ import java.net.Socket;
 public class ClientHandler implements Runnable {
 
     private final Socket socket;
+    private final UNOServer unos;
     private final BufferedReader input;
     private final PrintWriter output;
 
-    public ClientHandler(Socket s) throws IOException, UNOException {
+    public ClientHandler(Socket s, UNOServer unos) throws IOException, UNOException {
         this.socket = s;
+        this.unos = unos;
         this.input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.output = new PrintWriter(socket.getOutputStream());
     }
