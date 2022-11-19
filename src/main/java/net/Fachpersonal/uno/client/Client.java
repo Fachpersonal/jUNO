@@ -1,7 +1,6 @@
 package net.Fachpersonal.uno.client;
 
 import net.Fachpersonal.uno.utils.Player;
-import net.Fachpersonal.uno.utils.UNOPackage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,10 +35,9 @@ public class Client {
         System.out.println("New Player with name " + p.getUsername());
         input = new BufferedReader(new InputStreamReader(s.getInputStream()));
         output = new PrintWriter(s.getOutputStream());
-        UNOPackage unop = new UNOPackage(UNOPackage.Type.INIT,p.getUsername());
-        System.out.println(unop.toString());
-        write(unop.toString());
-        System.out.println(readLine());
+
+        write(p.getUsername());
+        gameLoop();
     }
 
     public static void main(String[] args) throws IOException {
