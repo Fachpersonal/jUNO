@@ -30,18 +30,17 @@ public class ClientHandler implements Runnable {
             while (true) {
                 line = readLine();
                 System.out.println(line);
-                write("ECHO:"+line);
+                write("ECHO:" + line);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (UNOException e) {
-            e.printStackTrace();
+            stop();
         }
     }
 
     public void stop() {
         try {
-            System.out.println("Client disconnected!");
+            unos.setConnectedPlayers(unos.getConnectedPlayers()-1);
+            System.out.println("Player disconnected! | " + unos.getConnectedPlayers() + " left");
             input.close();
             output.close();
             socket.close();
