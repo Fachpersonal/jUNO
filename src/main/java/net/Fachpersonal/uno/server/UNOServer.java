@@ -12,7 +12,19 @@ public class UNOServer {
     private final ArrayList<ClientHandler> clients;
     private ServerSocket ss;
 
+    private final int MAX_PLAYERS;
+    private int connectedPlayers = 0;
+
+    public int getConnectedPlayers() {
+        return connectedPlayers;
+    }
+    public void setConnectedPlayers(int n) {
+        connectedPlayers = n;
+    }
+
     public UNOServer(int port, int max_players) throws IOException, UNOException {
+        MAX_PLAYERS = max_players;
+        connectedPlayers = 0;
         clients = new ArrayList<>();
         ss = new ServerSocket(port);
         if (max_players == -1) {
@@ -36,5 +48,10 @@ public class UNOServer {
         ClientHandler ch = new ClientHandler(s);
         clients.add(ch);
         new Thread(ch).start();
+        connectedPlayers++;
+    }
+
+    public int getMAX_PLAYERS() {
+        return MAX_PLAYERS;
     }
 }
