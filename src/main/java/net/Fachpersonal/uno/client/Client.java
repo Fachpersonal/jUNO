@@ -1,6 +1,7 @@
 package net.Fachpersonal.uno.client;
 
 import net.Fachpersonal.uno.utils.Player;
+import net.Fachpersonal.uno.utils.UNOPackage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,37 +12,35 @@ import java.util.Scanner;
 
 public class Client {
 
-    private final BufferedReader in;
-    private final PrintWriter out;
+    private final BufferedReader input;
+    private final PrintWriter output;
 
     public Client(String ip, int port) throws IOException {
-        Socket s = new Socket(ip, port);
         Scanner sc = new Scanner(System.in);
+        System.out.print("Whats your name? ");
+        String username = sc.nextLine();
+        Socket s = new Socket(ip, port);
 
-        Player p = new Player(sc.nextLine());
-        in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        out = new PrintWriter(s.getOutputStream());
-
-        /* PACKAGE
-            type : [INIT,command]
-            value : [username, cmds]
-        */
-
-        while (true) {
-
-        }
+        Player p = new Player(username);
+        System.out.println("New Player with name " + p.getUsername());
+        input = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        output = new PrintWriter(s.getOutputStream());
+        UNOPackage unop = new UNOPackage(UNOPackage.Type.INIT,p.getUsername());
+        System.out.println(unop.toString());
+        write(unop.toString());
+        System.out.println(readLine());
     }
 
     public static void main(String[] args) throws IOException {
-        new Client("localhost", 12345);
+        new Client("172.30.3.38", 25565);
     }
 
     private void write(String msg) { // writes to server
-        out.write(msg);
-        out.flush();
+        output.println(msg);
+        output.flush();
     }
 
     private String readLine() throws IOException { // Reads messages from server
-        return in.readLine();
+        return input.readLine();
     }
 }

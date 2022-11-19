@@ -1,5 +1,8 @@
 package net.Fachpersonal.uno.server;
 
+import net.Fachpersonal.uno.exceptions.UNOException;
+import net.Fachpersonal.uno.utils.UNOPackage;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,27 +12,38 @@ import java.net.Socket;
 public class ClientHandler implements Runnable {
 
     private final Socket socket;
-    private final BufferedReader in;
-    private final PrintWriter out;
+    private final BufferedReader input;
+    private final PrintWriter output;
 
-    public ClientHandler(Socket s) throws IOException {
+    public ClientHandler(Socket s) throws IOException, UNOException {
         this.socket = s;
-        this.in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        this.out = new PrintWriter(s.getOutputStream());
+        this.input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        this.output = new PrintWriter(socket.getOutputStream());
     }
 
     @Override
     public void run() {
-        while (true) {
-            break;
+        try {
+            String line = readLine();
+            UNOPackage unop = new UNOPackage(line);
+            System.out.println("New Player Connected : "+unop.getValue());
+            while(true) {
+                line = readLine();
+                System.out.println(line);
+                write("ECHO:"+line);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (UNOException e) {
+            e.printStackTrace();
         }
-        stop();
     }
 
     public void stop() {
         try {
-            in.close();
-            out.close();
+            System.out.println("Client disconnected!");
+            input.close();
+            output.close();
             socket.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -37,11 +51,11 @@ public class ClientHandler implements Runnable {
     }
 
     public String readLine() throws IOException { // Reads what client sends to server
-        return in.readLine();
+        return input.readLine();
     }
 
     public void write(String msg) { // Writes to client
-        out.write(msg);
-        out.flush();
+        output.println(msg);
+        output.flush();
     }
 }

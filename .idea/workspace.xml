@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="926a6fbd-ec31-46bd-b570-4f09cebd9228" name="Changes" comment="fix">
+    <list default="true" id="926a6fbd-ec31-46bd-b570-4f09cebd9228" name="Changes" comment="change System">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/exceptions/UNOERR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/exceptions/UNOERR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/exceptions/UNOException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/exceptions/UNOException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/server/UNOServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/UNOServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/utils/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/utils/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fachpersonal/uno/utils/UNOPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/UNOPackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/UNOServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/UNOServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/UNOPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/UNOPackage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,16 +32,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="net.Fachpersonal.uno.client.Client" />
+      <module name="jUNO" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="net.Fachpersonal.Main" />
       <module name="jUNO" />
       <extension name="coverage">
@@ -58,9 +66,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Server" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -75,6 +87,9 @@
       <workItem from="1668163810978" duration="439000" />
       <workItem from="1668164610492" duration="1459000" />
       <workItem from="1668269748306" duration="60000" />
+      <workItem from="1668521772138" duration="42000" />
+      <workItem from="1668582350186" duration="12000" />
+      <workItem from="1668755630674" duration="10138000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1667749095719</created>
@@ -83,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667749095719</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="change System">
+      <created>1668521802791</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668521802791</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +124,27 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="change System" />
+    <option name="LAST_COMMIT_MESSAGE" value="change System" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/ClientHandler.java</url>
+          <line>17</line>
+          <properties class="net.Fachpersonal.uno.server.ClientHandler" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/ClientHandler.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
