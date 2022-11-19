@@ -1,7 +1,6 @@
 package net.Fachpersonal.uno.server;
 
 import net.Fachpersonal.uno.exceptions.UNOException;
-import net.Fachpersonal.uno.utils.UNOPackage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,9 +24,8 @@ public class ClientHandler implements Runnable {
     public void run() {
         try {
             String line = readLine();
-            UNOPackage unop = new UNOPackage(line);
-            System.out.println("New Player Connected : "+unop.getValue());
-            while(true) {
+            System.out.println("New Player Connected : " + line + " [ " + unos.getConnectedPlayers() + " / " + unos.getMAX_PLAYERS() + " ]");
+            while (true) {
                 line = readLine();
                 System.out.println(line);
                 write("ECHO:"+line);
