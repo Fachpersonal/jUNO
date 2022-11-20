@@ -1,5 +1,6 @@
 package net.Fachpersonal.uno.client;
 
+import net.Fachpersonal.uno.exceptions.UNOException;
 import net.Fachpersonal.uno.utils.Player;
 
 import java.io.BufferedReader;
@@ -17,6 +18,8 @@ public class Client {
     private final BufferedReader input;
     private final PrintWriter output;
 
+    private Player p;
+
     public Client(String ip, int port) throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.print("Whats your name? ");
@@ -31,7 +34,7 @@ public class Client {
         }
         Socket s = new Socket(ip, port);
 
-        Player p = new Player(username);
+        p = new Player(username);
         System.out.println("New Player with name " + p.getUsername());
         input = new BufferedReader(new InputStreamReader(s.getInputStream()));
         output = new PrintWriter(s.getOutputStream());
