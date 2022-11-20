@@ -12,16 +12,6 @@ public class Player {
         this.username = username;
     }
 
-    public void takeNewCard(int number) throws UNOException {
-        for (int i = 0; i < number; i++) {
-            hand.add(Card.newCard());
-        }
-    }
-
-    public void takeNewCard() throws UNOException {
-        takeNewCard(0);
-    }
-
     public String getUsername() {
         return username;
     }
