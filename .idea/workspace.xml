@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="926a6fbd-ec31-46bd-b570-4f09cebd9228" name="Changes" comment="updated .gitignore" />
+    <list default="true" id="926a6fbd-ec31-46bd-b570-4f09cebd9228" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Fachpersonal/uno/utils/Card.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667748613164</updated>
       <workItem from="1668862009433" duration="2988000" />
-      <workItem from="1668969815557" duration="2052000" />
+      <workItem from="1668969815557" duration="5207000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1667749095719</created>
@@ -192,7 +197,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668974001323</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="added Image&#10;&#10;Ripped by Spacemodo">
+      <created>1668974043531</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1668974043531</updated>
+    </task>
+    <task id="LOCAL-00018" summary="update">
+      <created>1668974062170</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1668974062170</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +242,8 @@
     <MESSAGE value="removed infinite player count&#10;&#10;now only finite player count possible" />
     <MESSAGE value="idk xD" />
     <MESSAGE value="updated .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated .gitignore" />
+    <MESSAGE value="added Image&#10;&#10;Ripped by Spacemodo" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
