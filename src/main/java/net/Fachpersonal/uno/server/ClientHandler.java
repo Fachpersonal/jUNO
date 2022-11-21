@@ -1,6 +1,7 @@
 package net.Fachpersonal.uno.server;
 
 import net.Fachpersonal.uno.exceptions.UNOException;
+import net.Fachpersonal.uno.utils.Player;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,22 +12,24 @@ import java.net.Socket;
 public class ClientHandler implements Runnable {
 
     private final Socket socket;
-    private final UNOServer serv;
     private final BufferedReader input;
     private final PrintWriter output;
 
-    public ClientHandler(Socket s, UNOServer serv) throws IOException, UNOException {
+    private Player p;
+
+    public ClientHandler(Socket s) throws IOException, UNOException {
         this.socket = s;
-        this.serv = serv;
         this.input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.output = new PrintWriter(socket.getOutputStream());
+        p = new Player(readLine());
+        System.out.println("New Player Connected : " + p.getUsername() + " [ " + UNOServer.UNO.getConnectedPlayers() + " / " + UNOServer.UNO.getMAX_PLAYERS() + " ]");
+
     }
 
     @Override
     public void run() {
         try {
             String line = readLine();
-            System.out.println("New Player Connected : " + line + " [ " + serv.getConnectedPlayers() + " / " + serv.getMAX_PLAYERS() + " ]");
             while (true) {
                 line = readLine();
                 System.out.println(line);
@@ -39,8 +42,8 @@ public class ClientHandler implements Runnable {
 
     public void stop() {
         try {
-            serv.setConnectedPlayers(serv.getConnectedPlayers()-1);
-            System.out.println("Player disconnected! | " + serv.getConnectedPlayers() + " left");
+            UNOServer.UNO.setConnectedPlayers(UNOServer.UNO.getConnectedPlayers()-1);
+            System.out.println("Player disconnected! | " + UNOServer.UNO.getConnectedPlayers() + " left");
             input.close();
             output.close();
             socket.close();
@@ -56,5 +59,9 @@ public class ClientHandler implements Runnable {
     public void write(String msg) { // Writes to client
         output.println(msg);
         output.flush();
+    }
+
+    public Player getP() {
+        return p;
     }
 }
