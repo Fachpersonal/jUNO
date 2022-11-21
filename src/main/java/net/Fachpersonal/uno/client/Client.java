@@ -49,6 +49,11 @@ public class Client {
     }
 
     public static void main(String[] args) throws IOException {
+        if(args[0].equalsIgnoreCase("-d")) {
+            debug = true;
+            System.out.println("debug enabled");
+
+        }
         new Client("localhost", 12345);
     }
 
@@ -59,5 +64,11 @@ public class Client {
 
     private String readLine() throws IOException { // Reads messages from server
         return input.readLine();
+    }
+
+    public static void console(String message) {
+        if(debug) {
+            System.out.println(message);
+        }
     }
 }
