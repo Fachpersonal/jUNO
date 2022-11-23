@@ -11,22 +11,12 @@ import java.util.ArrayList;
 
 public class UNOServer {
 
-    private final ArrayList<ClientHandler> clients;
-    private ServerSocket ss;
-
-    private final int MAX_PLAYERS;
-    private int connectedPlayers = 0;
-
     public static UNOServer UNO;
-
+    private final ArrayList<ClientHandler> clients;
+    private final int MAX_PLAYERS;
     public Game game;
-
-    public int getConnectedPlayers() {
-        return connectedPlayers;
-    }
-    public void setConnectedPlayers(int n) {
-        connectedPlayers = n;
-    }
+    private ServerSocket ss;
+    private int connectedPlayers = 0;
 
     public UNOServer(int port, int max_players) throws IOException, UNOException {
         UNO = this;
@@ -34,7 +24,7 @@ public class UNOServer {
         connectedPlayers = 0;
         clients = new ArrayList<>();
         ss = new ServerSocket(port);
-        while(connectedPlayers < max_players) {
+        while (connectedPlayers < max_players) {
             assignClient();
         }
         {
@@ -48,6 +38,14 @@ public class UNOServer {
 
     public static UNOServer DefaultUNOServer() throws IOException, UNOException {
         return new UNOServer(12345, 3);
+    }
+
+    public int getConnectedPlayers() {
+        return connectedPlayers;
+    }
+
+    public void setConnectedPlayers(int n) {
+        connectedPlayers = n;
     }
 
     private void assignClient() throws IOException, UNOException {
