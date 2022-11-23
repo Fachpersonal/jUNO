@@ -35,19 +35,23 @@ public class Window extends JFrame {
 }
 
 class Frame extends JComponent {
-    private int[] player0;
-    private int[] player1;
-    private int[] player2;
+    private final int[] player0;
+    private final int[] player1;
+    private final int[] player2;
 
-    private int[] middle;
-    private int[] deck;
+    private final int[] middle;
+    private final int[] deck;
 
-    private final int CARD_WINDOW_OFFSET = 12;
     private final int CARD_SIZE_INDEX = 2;
     private SpriteSheet spriteSheet;
 
+    public SpriteSheet getSpriteSheet() {
+        return spriteSheet;
+    }
+
     public Frame() {
         init();
+        int CARD_WINDOW_OFFSET = 12;
         player0 = new int[]{
                 Window.WIDTH / 2,
                 (Window.HEIGHT - (spriteSheet.grabImage(0, 0).getHeight() * (CARD_SIZE_INDEX + 1))) - CARD_WINDOW_OFFSET
@@ -148,7 +152,7 @@ class Frame extends JComponent {
         }
         // ### Draw middle cards ###
         {
-            BufferedImage oimg = resizeImage(spriteSheet.grabImage(1, 6));
+            BufferedImage oimg = resizeImage(spriteSheet.getImage(game.getMiddleCard()));
             g.drawImage(oimg, middle[0] - (oimg.getWidth() / 2), middle[1] - (oimg.getHeight() / 2), this);
 
         }
