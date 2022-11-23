@@ -38,19 +38,48 @@ public class Game {
         }
         for (Player p : players) {
             ClientHandler ch = p.getCh();
-            if(ch.readLine().equals("#requestPlayers")) {
-                ch.writeOBJ(ch.getP());
-                ch.writeOBJ(players);
-                ch.writeOBJ(turn_clockwise);
-                ch.writeOBJ(turnIndex);
+            String read = ch.readLine();
+            if (read.equals("#init")) {
+                ch.write(ch.getP().toString());
+                String playersStr ="";
+                for (Player px : players) {
+                    playersStr += px.toString()+";";
+
+                }
+                ch.write(playersStr);
+                ch.write(turn_clockwise+"");
+                ch.write(turnIndex+"");
+            }
+            do {
+                read = ch.readLine();
+            } while (!read.equals("#ready"));
+        }
+        UNOServer.UNO.broadcast("#startGame");
+        UNOServer.UNO.broadcast(middle.toString());
+        players[turnIndex].getCh().write("#yourTurn");
+        String playersResponse = players[turnIndex].getCh().readLine();
+        Card c = Card.StringToCard(playersResponse);
+        middle = c;
+        players[turnIndex].getHand().remove(c);
+        for (int i = 0; i < Card.usedCards.size(); i++) {
+            int cindex = Card.getCardIndex(c);
+            if(cindex < Card.gameCards.length-9) {
+                if(Card.usedCards.get(i) == cindex || Card.usedCards.get(i) == cindex+1) {
+                    Card.usedCards.remove(i);
+                }
+            } else {
+                if(Card.usedCards.get(i) == cindex || Card.usedCards.get(i) == cindex+1 || Card.usedCards.get(i) == cindex+2 || Card.usedCards.get(i) == cindex+3) {
+                    Card.usedCards.remove(i);
+                }
             }
         }
+        UNOServer.UNO.broadcast("#"+players[turnIndex].getUsername()+"-");
     }
-    private void stopGame(){}
-    private void gameLoop(){
-        UNOServer.UNO.command("begin");
-        UNOServer.UNO.broadcast(players[0].getUsername());
-        UNOServer.UNO.command("gameloop");
+
+    private void stopGame() {
+    }
+
+    private void gameLoop() {
 
     }
 }
