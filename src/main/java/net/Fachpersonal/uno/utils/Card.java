@@ -163,6 +163,18 @@ public class Card {
         }
     }
 
+    public static Card getRandomCard() {
+        Card card = null;
+        int rnd;
+        do{
+            rnd = (int)(Math.floor(Math.random() * gameCards.length));
+            if(!usedCards.contains(rnd)){
+                usedCards.add(rnd);
+                return gameCards[rnd];
+            }
+        } while (true);
+    }
+
     public Color getColor() {
         return color;
     }
