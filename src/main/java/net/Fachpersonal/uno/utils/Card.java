@@ -194,5 +194,7 @@ public class Card {
 
         public final static Type[] types = values();
     }
-
+    public String toString(){
+        return type.toString()+":"+color.toString()+":"+index;
+    }
 }
