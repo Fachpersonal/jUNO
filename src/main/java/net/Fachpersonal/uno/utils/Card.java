@@ -149,7 +149,7 @@ public class Card {
 
     public Card(Color color, Type type) throws UNOException {
         switch (type) {
-            case REVERSE, PLUS2, SKIP, SWITCH -> {
+            case REVERSE, PLUS2, SKIP -> {
                 this.color = color;
                 this.type = type;
                 this.index = -1;
@@ -182,7 +182,7 @@ public class Card {
     }
 
     public enum Type {
-        REVERSE, PLUS2, PLUS4, CHANGE_COLOR, SKIP, SWITCH, NONE, NORMAL;
+        REVERSE, PLUS2, PLUS4, CHANGE_COLOR, SKIP, NONE, NORMAL;
 
         public final static Type[] types = values();
     }
