@@ -3,15 +3,12 @@ package net.Fachpersonal.uno.client;
 import net.Fachpersonal.uno.exceptions.UNOException;
 import net.Fachpersonal.uno.utils.BufferedImageLoader;
 import net.Fachpersonal.uno.utils.Card;
-import net.Fachpersonal.uno.utils.Player;
 import net.Fachpersonal.uno.utils.SpriteSheet;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Window extends JFrame {
 
