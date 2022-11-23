@@ -201,4 +201,24 @@ public class Card {
     public String toString(){
         return type.toString()+":"+color.toString()+":"+index;
     }
+
+    public static Card StringToCard(String string) throws UNOException {
+        StringBuffer sb = new StringBuffer(string);
+        String[] split = string.split(":");
+        Type type = Type.valueOf(split[0]);
+        Color color = Color.valueOf(split[1]);
+        int index = Integer.valueOf(split[2]);
+        if(type == Type.NORMAL)
+            return new Card(color, index);
+        return new Card(color,type);
+    }
+
+    public static int getCardIndex(Card c) {
+        for (int i = 0; i < gameCards.length; i++) {
+            if(gameCards[i].toString().equals(c.toString())) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

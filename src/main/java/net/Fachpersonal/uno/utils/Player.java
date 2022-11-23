@@ -33,4 +33,25 @@ public class Player {
     public ClientHandler getCh() {
         return ch;
     }
+
+    public String toString() {
+       String str = username + "|";
+        for(Card c : hand) {
+            str += c.toString() + ",";
+        }
+        return str.substring(0,str.length()-1);
+    }
+
+    public static Player StringToPlayer(String string) throws UNOException {
+        StringBuffer sb = new StringBuffer(string);
+        String username = sb.substring(0, sb.indexOf("|"));
+        ArrayList<Card> hand = new ArrayList<>();
+        String[] handStr = string.substring(string.indexOf("|") + 1).split(",");
+        for (String hstr : handStr) {
+            hand.add(Card.StringToCard(hstr));
+        }
+        Player p = new Player(username);
+        p.setHand(hand);
+        return p;
+    }
 }
