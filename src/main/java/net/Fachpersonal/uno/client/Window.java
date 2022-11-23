@@ -15,10 +15,12 @@ public class Window extends JFrame {
     public final static int HEIGHT = 700;
     public final static int WIDTH = 700;
 
+    public Frame frame;
+
     public Window() throws IOException {
         this.setTitle("ASD");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Frame frame = new Frame();
+        frame = new Frame();
         this.add(frame);
         this.setSize(WIDTH, HEIGHT);
         this.setResizable(false);
