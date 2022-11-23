@@ -64,13 +64,6 @@ public class UNOServer {
         Main.console("[@ALL] " + message);
     }
 
-    public void command(String command) {
-        for(ClientHandler ch : clients) {
-            ch.write("_."+command);
-        }
-        Main.console("[#CMD] " + command);
-    }
-
     public int getMAX_PLAYERS() {
         return MAX_PLAYERS;
     }
