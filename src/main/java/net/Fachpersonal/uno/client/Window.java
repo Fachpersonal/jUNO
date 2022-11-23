@@ -97,29 +97,6 @@ class Frame extends JComponent {
 
         g.drawLine(Window.WIDTH / 2, 0, Window.WIDTH / 2, Window.HEIGHT);
         g.drawLine(0, Window.HEIGHT / 2, Window.WIDTH, Window.HEIGHT / 2);
-//        g.drawImage(spriteSheet.grabImage(0,0),player0[0],player0[1],this);
-//        g.drawImage(spriteSheet.grabImage(1,0),player1[0],player1[1],this);
-//        g.drawImage(spriteSheet.grabImage(4,8),player2[0],player2[1],this);
-
-//        ArrayList<Card> hand = new ArrayList<>();
-//        try {
-//            hand.add(new Card(Card.Color.GREEN, Card.Type.SKIP));
-//            hand.add(new Card(Card.Color.SPECIAL, Card.Type.CHANGE_COLOR));
-//            hand.add(new Card(Card.Color.GREEN, Card.Type.SKIP));
-//            hand.add(new Card(Card.Color.GREEN, 3));
-//            hand.add(new Card(Card.Color.YELLOW, 5));
-//            hand.add(new Card(Card.Color.RED, Card.Type.SKIP));
-//            hand.add(new Card(Card.Color.RED, Card.Type.PLUS2));
-//            hand.add(new Card(Card.Color.BLUE, Card.Type.SKIP));
-//            hand.add(new Card(Card.Color.SPECIAL, Card.Type.CHANGE_COLOR));
-//            hand.add(new Card(Card.Color.RED, Card.Type.SKIP));
-//            hand.add(new Card(Card.Color.YELLOW, 3));
-//            hand.add(new Card(Card.Color.YELLOW, 5));
-//            hand.add(new Card(Card.Color.YELLOW, Card.Type.SKIP));
-//            hand.add(new Card(Card.Color.BLUE, Card.Type.PLUS2));
-//        } catch (UNOException e) {
-//            throw new RuntimeException(e);
-//        }
 
         // ### Draw Player 0 Cards ###
         {
