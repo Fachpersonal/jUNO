@@ -1,5 +1,6 @@
 package net.Fachpersonal.uno.server;
 
+import net.Fachpersonal.uno.exceptions.UNOException;
 import net.Fachpersonal.uno.utils.Card;
 import net.Fachpersonal.uno.utils.Player;
 
@@ -12,7 +13,10 @@ public class Game {
 
     private int turnIndex;
     private Player[] players;
-    public Game(Player[] players) throws IOException {
+
+    private Card middle;
+
+    public Game(Player[] players) throws IOException, UNOException {
         this.turn_clockwise = false;
         this.turnIndex = 0;
         this.players = players;
@@ -21,7 +25,17 @@ public class Game {
         stopGame();
     }
 
-    private void startGame() throws IOException {
+    private void startGame() throws IOException, UNOException {
+        middle = Card.getRandomCard();
+        {
+            for (int k = 0; k < players.length; k++) {
+                ArrayList<Card> hand = new ArrayList<>();
+                for (int i = 0; i < 7; i++) {
+                    hand.add(Card.getRandomCard());
+                }
+                players[k].setHand(hand);
+            }
+        }
         for (Player p : players) {
             ClientHandler ch = p.getCh();
             if(ch.readLine().equals("#requestPlayers")) {
@@ -38,9 +52,5 @@ public class Game {
         UNOServer.UNO.broadcast(players[0].getUsername());
         UNOServer.UNO.command("gameloop");
 
-        boolean game_over = false;
-        while(!game_over) {
-
-        }
     }
 }
