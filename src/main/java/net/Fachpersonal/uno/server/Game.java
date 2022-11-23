@@ -3,40 +3,33 @@ package net.Fachpersonal.uno.server;
 import net.Fachpersonal.uno.utils.Card;
 import net.Fachpersonal.uno.utils.Player;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Game {
 
+    private boolean turn_clockwise;
+
+    private int turnIndex;
     private Player[] players;
-    public Game(Player[] players) {
+    public Game(Player[] players) throws IOException {
+        this.turn_clockwise = false;
+        this.turnIndex = 0;
         this.players = players;
         startGame();
         gameLoop();
         stopGame();
     }
 
-    private void startGame(){
-        UNOServer.UNO.command("startGame");
-        String playerNameCommand = "";
-        for(Player p : players) {
-            playerNameCommand += p.getUsername() +",";
-            ArrayList<Card> hand = new ArrayList<>();
-            for (int i = 0; i < 7; i++) {
-                int x = (int)Math.floor(Math.random() * Card.gameCards.length);
-                if(!Card.usedCards.contains(x)) {
-                    hand.add(Card.gameCards[x]);
-                    Card.usedCards.add(x);
-                } else {
-                    i--;
-                }
+    private void startGame() throws IOException {
+        for (Player p : players) {
+            ClientHandler ch = p.getCh();
+            if(ch.readLine().equals("#requestPlayers")) {
+                ch.writeOBJ(players);
+                ch.writeOBJ(turn_clockwise);
+                ch.writeOBJ(turnIndex);
             }
-            p.setHand(hand);
         }
-        UNOServer.UNO.broadcast(playerNameCommand);
-        UNOServer.UNO.broadcast("Welcome to UNO!\n\t  The game is starting!");
-//        UNOServer.UNO.broadcast("Every player now has his cards!");
-        UNOServer.UNO.broadcast(players[0].getUsername() + " begins!");
-
     }
     private void stopGame(){}
     private void gameLoop(){
