@@ -1,5 +1,6 @@
 package net.Fachpersonal.uno.client;
 
+import net.Fachpersonal.uno.exceptions.UNOERR;
 import net.Fachpersonal.uno.exceptions.UNOException;
 import net.Fachpersonal.uno.utils.Card;
 import net.Fachpersonal.uno.utils.Player;
@@ -23,11 +24,15 @@ public class Client {
     public static boolean debug = false;
 
     public static Client client = null;
+    public Game game = null;
 
     public Client(String ip, int port) throws IOException, UNOException {
-        if(client != null) {
+        if(client == null) {
             client = this;
+        } else {
+            throw new UNOException(UNOERR.CANNOT_CREATE_CLIENT);
         }
+
         String username;
 
         Scanner sc = new Scanner(System.in);
@@ -51,7 +56,11 @@ public class Client {
         objOutput = new ObjectOutputStream(s.getOutputStream());
 
         if(readLine().substring(2).equals("startGame")) {
-            new Game();
+            if(game == null) {
+                game = new Game();
+            } else {
+
+            }
         }
         s.close();
     }

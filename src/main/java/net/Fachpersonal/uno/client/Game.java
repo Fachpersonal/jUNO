@@ -12,7 +12,10 @@ public class Game {
 
     private boolean turn_clockwise;
     private int turnIndex;
-    private Player[] players;
+    private Player player0 = null;
+    private Player player1 = null;
+
+    private Player player2 = null;
 
     private BufferedImage spriteSheet;
 
@@ -23,19 +26,19 @@ public class Game {
 
     private void init() {
         {
-            BufferedImageLoader loader = new BufferedImageLoader();
-            try {
-                spriteSheet = loader.loadImage("/default.png");
-                SpriteSheet ss = new SpriteSheet(spriteSheet);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } // spriteSheet
-        {
             Client.client.write("#requestPlayers");
             try {
-                players = (Player[]) Client.client.readObject();
+                player0 = (Player) Client.client.readObject();
+                Player[] ps = (Player[]) Client.client.readObject();
+                int index = -1;
+                for (int i = 0; i < ps.length; i++) {
+                    if(player1 != null && ps[i] != player0){
+                        player1 = ps[i];
+                    } else if(player2 != null && ps[i] != player0){
+                        player2 = ps[i];
+                    }
+                }
+
                 turn_clockwise = (boolean) Client.client.readObject();
                 turnIndex = (int) Client.client.readObject();
             } catch (IOException e) {
@@ -52,5 +55,17 @@ public class Game {
 
     private void stopGame() {
 
+    }
+
+    public Player getPlayer0() {
+        return player0;
+    }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
     }
 }

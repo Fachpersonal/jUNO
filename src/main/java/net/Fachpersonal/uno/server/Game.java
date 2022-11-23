@@ -25,6 +25,7 @@ public class Game {
         for (Player p : players) {
             ClientHandler ch = p.getCh();
             if(ch.readLine().equals("#requestPlayers")) {
+                ch.writeOBJ(ch.getP());
                 ch.writeOBJ(players);
                 ch.writeOBJ(turn_clockwise);
                 ch.writeOBJ(turnIndex);
