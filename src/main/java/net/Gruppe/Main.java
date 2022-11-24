@@ -1,7 +1,7 @@
-package net.Fachpersonal;
+package net.Gruppe;
 
-import net.Fachpersonal.uno.exceptions.UNOException;
-import net.Fachpersonal.uno.server.UNOServer;
+import net.Gruppe.uno.exceptions.UNOException;
+import net.Gruppe.uno.server.UNOServer;
 
 import java.io.IOException;
 

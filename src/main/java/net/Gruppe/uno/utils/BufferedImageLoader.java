@@ -1,4 +1,4 @@
-package net.Fachpersonal.uno.utils;
+package net.Gruppe.uno.utils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

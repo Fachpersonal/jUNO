@@ -1,13 +1,14 @@
-package net.Fachpersonal.uno.server;
+package net.Gruppe.uno.server;
 
-import net.Fachpersonal.Main;
-import net.Fachpersonal.uno.exceptions.UNOException;
-import net.Fachpersonal.uno.utils.Player;
+import net.Gruppe.uno.exceptions.UNOException;
+import net.Gruppe.uno.utils.Player;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+
+//import net.Fachpersonal.Main;
 
 public class UNOServer {
 
@@ -33,6 +34,7 @@ public class UNOServer {
                 players[i] = clients.get(i).getP();
             }
             game = new Game(players);
+            game.startGame();
         }
     }
 
@@ -50,18 +52,18 @@ public class UNOServer {
 
     private void assignClient() throws IOException, UNOException {
         Socket s = ss.accept();
+        connectedPlayers++;
         System.out.println("Client connected!");
         ClientHandler ch = new ClientHandler(s);
         clients.add(ch);
         new Thread(ch).start();
-        connectedPlayers++;
     }
 
     public void broadcast(String message) {
         for (ClientHandler ch : clients) {
             ch.write(message);
         }
-        Main.console("[@ALL] " + message);
+        System.out.println("[@ALL] " + message);
     }
 
     public int getMAX_PLAYERS() {

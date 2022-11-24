@@ -1,13 +1,12 @@
-package net.Fachpersonal.uno.utils;
+package net.Gruppe.uno.utils;
 
 import java.awt.image.BufferedImage;
 
 public class SpriteSheet {
 
-    private BufferedImage image;
-
     public final int SPRITE_WIDTH = 32;
     public final int SPRITE_HEIGHT = 48;
+    private BufferedImage image;
 
 
     public SpriteSheet(BufferedImage image) {
@@ -19,120 +18,134 @@ public class SpriteSheet {
     }
 
     public BufferedImage getImage(Card c) {
-        int col=0,row=0;
+        int col = 0, row = 0;
         switch (c.getColor()) {
             case RED -> {
                 switch (c.getType()) {
                     case NORMAL -> {
-                        col = 1; row = c.getIndex();
+                        col = 1;
+                        row = c.getIndex();
                     }
                     case SKIP -> {
-                        col = 0; row = 1;
+                        col = 0;
+                        row = 1;
                     }
                     case PLUS2 -> {
-                        col = 1; row = 10;
+                        col = 1;
+                        row = 10;
                     }
                     case PLUS4 -> {
-                        col = 1; row = 13;
-                    }
-                    case SWITCH -> {
-                        col = 1; row = 11;
+                        col = 1;
+                        row = 13;
                     }
                     case REVERSE -> {
-                        col = 0; row = 5;
+                        col = 0;
+                        row = 5;
                     }
                     case CHANGE_COLOR -> {
-                        col = 1; row = 12;
+                        col = 1;
+                        row = 12;
                     }
                 }
             }
             case BLUE -> {
                 switch (c.getType()) {
                     case NORMAL -> {
-                        col = 4; row = c.getIndex();
+                        col = 4;
+                        row = c.getIndex();
                     }
                     case SKIP -> {
-                        col = 0; row = 4;
+                        col = 0;
+                        row = 4;
                     }
                     case PLUS2 -> {
-                        col = 4; row = 10;
+                        col = 4;
+                        row = 10;
                     }
                     case PLUS4 -> {
-                        col = 4; row = 13;
-                    }
-                    case SWITCH -> {
-                        col = 4; row = 11;
+                        col = 4;
+                        row = 13;
                     }
                     case REVERSE -> {
-                        col = 0; row = 8;
+                        col = 0;
+                        row = 8;
                     }
                     case CHANGE_COLOR -> {
-                        col = 4; row = 12;
+                        col = 4;
+                        row = 12;
                     }
                 }
             }
             case GREEN -> {
                 switch (c.getType()) {
                     case NORMAL -> {
-                        col = 3; row = c.getIndex();
+                        col = 3;
+                        row = c.getIndex();
                     }
                     case SKIP -> {
-                        col = 0; row = 3;
+                        col = 0;
+                        row = 3;
                     }
                     case PLUS2 -> {
-                        col = 3; row = 10;
+                        col = 3;
+                        row = 10;
                     }
                     case PLUS4 -> {
-                        col = 3; row = 13;
-                    }
-                    case SWITCH -> {
-                        col = 3; row = 11;
+                        col = 3;
+                        row = 13;
                     }
                     case REVERSE -> {
-                        col = 0; row = 7;
+                        col = 0;
+                        row = 7;
                     }
                     case CHANGE_COLOR -> {
-                        col = 3; row = 12;
+                        col = 3;
+                        row = 12;
                     }
                 }
             }
             case YELLOW -> {
                 switch (c.getType()) {
                     case NORMAL -> {
-                        col = 2; row = c.getIndex();
+                        col = 2;
+                        row = c.getIndex();
                     }
                     case SKIP -> {
-                        col = 0; row = 2;
+                        col = 0;
+                        row = 2;
                     }
                     case PLUS2 -> {
-                        col = 2; row = 10;
+                        col = 2;
+                        row = 10;
                     }
                     case PLUS4 -> {
-                        col = 2; row = 13;
-                    }
-                    case SWITCH -> {
-                        col = 2; row = 11;
+                        col = 2;
+                        row = 13;
                     }
                     case REVERSE -> {
-                        col = 0; row = 6;
+                        col = 0;
+                        row = 6;
                     }
                     case CHANGE_COLOR -> {
-                        col = 2; row = 12;
+                        col = 2;
+                        row = 12;
                     }
                 }
             }
             case SPECIAL -> {
                 switch (c.getType()) {
                     case CHANGE_COLOR -> {
-                        col = 0; row = 12;
+                        col = 0;
+                        row = 12;
                     }
                     case PLUS4 -> {
-                        col = 0; row = 13;
+                        col = 0;
+                        row = 13;
                     }
                 }
             }
         }
-        return grabImage(col,row);
+        return grabImage(col, row);
     }
 
 }

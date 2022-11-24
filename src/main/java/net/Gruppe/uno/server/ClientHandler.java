@@ -1,7 +1,6 @@
-package net.Fachpersonal.uno.server;
+package net.Gruppe.uno.server;
 
-import net.Fachpersonal.uno.exceptions.UNOException;
-import net.Fachpersonal.uno.utils.Player;
+import net.Gruppe.uno.utils.Player;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class ClientHandler implements Runnable {
 
     private Player p;
 
-    public ClientHandler(Socket s) throws IOException, UNOException {
+    public ClientHandler(Socket s) throws IOException {
         this.socket = s;
         this.input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.output = new PrintWriter(socket.getOutputStream());

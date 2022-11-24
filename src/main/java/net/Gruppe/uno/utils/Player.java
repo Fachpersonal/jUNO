@@ -1,7 +1,7 @@
-package net.Fachpersonal.uno.utils;
+package net.Gruppe.uno.utils;
 
-import net.Fachpersonal.uno.exceptions.UNOException;
-import net.Fachpersonal.uno.server.ClientHandler;
+import net.Gruppe.uno.exceptions.UNOException;
+import net.Gruppe.uno.server.ClientHandler;
 
 import java.util.ArrayList;
 

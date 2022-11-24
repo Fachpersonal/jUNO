@@ -1,9 +1,8 @@
-package net.Fachpersonal.uno.client;
+package net.Gruppe.uno.client;
 
-import net.Fachpersonal.uno.exceptions.UNOException;
-import net.Fachpersonal.uno.utils.BufferedImageLoader;
-import net.Fachpersonal.uno.utils.Card;
-import net.Fachpersonal.uno.utils.SpriteSheet;
+import net.Gruppe.uno.utils.BufferedImageLoader;
+import net.Gruppe.uno.utils.Card;
+import net.Gruppe.uno.utils.SpriteSheet;
 
 import javax.swing.*;
 import java.awt.*;

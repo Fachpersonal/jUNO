@@ -1,4 +1,4 @@
-package net.Fachpersonal.uno.exceptions;
+package net.Gruppe.uno.exceptions;
 
 public class UNOException extends Exception {
     private final UNOERR unoerr;

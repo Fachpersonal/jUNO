@@ -1,7 +1,7 @@
-package net.Fachpersonal.uno.client;
+package net.Gruppe.uno.client;
 
-import net.Fachpersonal.uno.exceptions.UNOERR;
-import net.Fachpersonal.uno.exceptions.UNOException;
+import net.Gruppe.uno.exceptions.UNOERR;
+import net.Gruppe.uno.exceptions.UNOException;
 
 import java.io.*;
 import java.net.Socket;
@@ -43,10 +43,13 @@ public class Client {
 
         input = new BufferedReader(new InputStreamReader(s.getInputStream()));
         output = new PrintWriter(s.getOutputStream());
+        write(username);
 
-        if (readLine().substring(2).equals("startGame")) {
+        String x = readLine();
+        if (x.equals("#initGame")) {
             if (game == null) {
-                game = new Game();
+                game = new Game(this);
+                game.startGame();
             } else {
                 throw new UNOException(UNOERR.GAME_STARTED);
             }
@@ -68,8 +71,9 @@ public class Client {
         }
     }
 
-    public void write(String msg) { // writes to server
+    public void write(String msg) throws IOException { // writes to server
         output.println(msg);
+        System.out.println("WRITE>>"+msg);
         output.flush();
     }
 

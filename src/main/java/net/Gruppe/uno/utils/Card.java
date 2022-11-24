@@ -1,10 +1,9 @@
-package net.Fachpersonal.uno.utils;
+package net.Gruppe.uno.utils;
 
-import net.Fachpersonal.uno.exceptions.UNOERR;
-import net.Fachpersonal.uno.exceptions.UNOException;
+import net.Gruppe.uno.exceptions.UNOERR;
+import net.Gruppe.uno.exceptions.UNOException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Card {
 
@@ -161,6 +160,12 @@ public class Card {
             }
             case NORMAL -> throw new UNOException(UNOERR.CARD_MISSING_INDEX);
         }
+    }
+
+    public Card(Type type, Color color) {
+        this.color = color;
+        this.type = type;
+        this.index = -1;
     }
 
     public static Card getRandomCard() {
