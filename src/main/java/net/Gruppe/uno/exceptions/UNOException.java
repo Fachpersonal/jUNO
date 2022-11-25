@@ -1,5 +1,8 @@
 package net.Gruppe.uno.exceptions;
 
+/**
+ * Custom Exception
+ */
 public class UNOException extends Exception {
     private final UNOERR unoerr;
 

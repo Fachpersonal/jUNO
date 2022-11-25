@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/** ClientHandler der jeden einzelnen Client des sich verbunden hat verwaltet */
 public class ClientHandler implements Runnable {
 
     private final Socket socket;
@@ -16,15 +17,22 @@ public class ClientHandler implements Runnable {
 
     private Player p;
 
+    /** Representiert die Clients, auf Server ebene */
     public ClientHandler(Socket s) throws IOException {
         this.socket = s;
+
+        /** Manifestierung der Ein- und Ausgänge des Clients in Variablen */
         this.input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.output = new PrintWriter(socket.getOutputStream());
 
+        /** Erstellt ein neues Spieler-Objekt */
         p = new Player(readLine(), this);
         System.out.println("New Player Connected : " + p.getUsername() + " [ " + UNOServer.UNO.getConnectedPlayers() + " / " + UNOServer.UNO.getMAX_PLAYERS() + " ]");
     }
 
+    /**
+     * Reflektiert alle ungewollten Eingaben
+     */
     @Override
     public void run() {
         try {
@@ -39,6 +47,7 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /** Stoppt den Client und trennt sich mit diesem */
     public void stop() {
         try {
             UNOServer.UNO.setConnectedPlayers(UNOServer.UNO.getConnectedPlayers() - 1);
@@ -51,15 +60,22 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Methode um die Nachrichten die vom Client kommen zu lesen
+     */
     public String readLine() throws IOException { // Reads what client sends to server
         return input.readLine();
     }
 
+    /**
+     * Methode um eine Nachricht an den Client zu schreiben
+     */
     public void write(String msg) { // Writes to client
         output.println(msg);
         output.flush();
     }
 
+    /** ### GETTER UND SETTER ### */
     public Player getP() {
         return p;
     }

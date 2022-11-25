@@ -5,11 +5,13 @@ import net.Gruppe.uno.exceptions.UNOException;
 
 import java.util.ArrayList;
 
+/** Objekt einer Karte */
 public class Card {
 
     public static final Card[] gameCards;
     public static final ArrayList<Integer> usedCards;
 
+    /** Erstellt eine List mit benutzten Karten und erstellt eine Liste mit allen Karten die im Spiel sind */
     static {
         try {
             usedCards = new ArrayList<>();
@@ -139,6 +141,7 @@ public class Card {
     private Type type;
     private int index;
 
+    /** Erstelle eine normale Karte mit Farbe und Zahl */
     public Card(Color color, int index) {
         this.color = color;
         this.type = Type.NORMAL;
@@ -146,6 +149,7 @@ public class Card {
 
     }
 
+    /** Erstelle eine Speziele (Aktionskarte) mithilfe von Farbe und dem Karten Type */
     public Card(Color color, Type type) throws UNOException {
         switch (type) {
             case REVERSE, PLUS2, SKIP -> {
@@ -162,16 +166,22 @@ public class Card {
         }
     }
 
+    /** Spezieller Konstruktor für Karten vom Typ PLUS4 sowie CHANGE_COLOR */
     public Card(Type type, Color color) {
         this.color = color;
         this.type = type;
         this.index = -1;
     }
 
+    /** Gibt eine zufällige Karte aus */
     public static Card getRandomCard() {
         Card card = null;
         int rnd;
         do{
+            /** Math.floor zum runden
+             *  Math.random gibt eine Kommazahl zwischen 0 und 1
+             *  Math.random() * $ZAHL - $ZAHL ist die Maximale Zahl Bsp.: Math.random()= 1 * 5 also besteht eine range von 0 bis 5
+             */
             rnd = (int)(Math.floor(Math.random() * gameCards.length));
             if(!usedCards.contains(rnd)){
                 usedCards.add(rnd);
@@ -179,6 +189,30 @@ public class Card {
             }
         } while (true);
     }
+
+    /** Wandelt den String wieder in ein Karten Objekt um */
+    public static Card StringToCard(String string) throws UNOException {
+        StringBuffer sb = new StringBuffer(string);
+        String[] split = string.split(":");
+        Type type = Type.valueOf(split[0]);
+        Color color = Color.valueOf(split[1]);
+        int index = Integer.valueOf(split[2]);
+        if(type == Type.NORMAL)
+            return new Card(color, index);
+        return new Card(color,type);
+    }
+
+    /** Gibt den Index der dazugehörigen Karte aus */
+    public static int getCardIndex(Card c) {
+        for (int i = 0; i < gameCards.length; i++) {
+            if(gameCards[i].toString().equals(c.toString())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /** ### GETTER und SETTER */
 
     public Color getColor() {
         return color;
@@ -192,38 +226,22 @@ public class Card {
         return index;
     }
 
+    /** Alle möglichen Karten Farben */
     public enum Color {
         RED, GREEN, BLUE, YELLOW, SPECIAL;
 
         public final static Color[] colors = values();
     }
 
+    /** Alle möglichen Karten Typen */
     public enum Type {
         REVERSE, PLUS2, PLUS4, CHANGE_COLOR, SKIP, NONE, NORMAL;
 
         public final static Type[] types = values();
     }
+
+    /** Gibt die Karte in einem String Format wieder zurück */
     public String toString(){
         return type.toString()+":"+color.toString()+":"+index;
-    }
-
-    public static Card StringToCard(String string) throws UNOException {
-        StringBuffer sb = new StringBuffer(string);
-        String[] split = string.split(":");
-        Type type = Type.valueOf(split[0]);
-        Color color = Color.valueOf(split[1]);
-        int index = Integer.valueOf(split[2]);
-        if(type == Type.NORMAL)
-            return new Card(color, index);
-        return new Card(color,type);
-    }
-
-    public static int getCardIndex(Card c) {
-        for (int i = 0; i < gameCards.length; i++) {
-            if(gameCards[i].toString().equals(c.toString())) {
-                return i;
-            }
-        }
-        return -1;
     }
 }

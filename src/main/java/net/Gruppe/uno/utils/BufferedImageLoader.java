@@ -4,12 +4,16 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Klasse zum Laden von Bildern
+ */
 public class BufferedImageLoader {
 
-    private BufferedImage image;
 
+    /**
+     * Lade ein Bild, mithilfe des Pfades, dass im Resource Ordner liegt
+     */
     public BufferedImage loadImage(String path) throws IOException {
-        image = ImageIO.read(getClass().getResource(path));
-        return image;
+        return ImageIO.read(getClass().getResource(path));
     }
 }

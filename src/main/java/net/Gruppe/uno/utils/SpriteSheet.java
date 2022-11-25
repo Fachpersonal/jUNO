@@ -8,8 +8,12 @@ public class SpriteSheet {
     public final int SPRITE_HEIGHT = 48;
     private BufferedImage image;
 
+    public static SpriteSheet spriteSheet = null;
 
     public SpriteSheet(BufferedImage image) {
+        if(spriteSheet == null) {
+            spriteSheet = this;
+        }
         this.image = image;
     }
 

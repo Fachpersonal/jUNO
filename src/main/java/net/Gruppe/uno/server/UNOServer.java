@@ -8,8 +8,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-//import net.Fachpersonal.Main;
-
+/**
+ * Server
+ */
 public class UNOServer {
 
     public static UNOServer UNO;
@@ -19,15 +20,23 @@ public class UNOServer {
     private ServerSocket ss;
     private int connectedPlayers = 0;
 
+    /**
+     * Erstellt einen Server unter den Attributen port und setzt die maximale anzahl an Clients die sich
+     * mit dem Server verbinden, können
+     */
     public UNOServer(int port, int max_players) throws IOException, UNOException {
         UNO = this;
         MAX_PLAYERS = max_players;
         connectedPlayers = 0;
         clients = new ArrayList<>();
         ss = new ServerSocket(port);
+
+        /** loop der die anzahl der Spieler kontrolliert */
         while (connectedPlayers < max_players) {
             assignClient();
         }
+
+        /** fügt alle erstellten Spieler in eine Liste und startet ein Spiel mit dieser Liste */
         {
             Player[] players = new Player[max_players];
             for (int i = 0; i < max_players; i++) {
@@ -38,18 +47,14 @@ public class UNOServer {
         }
     }
 
+    /** Standard UNO Server */
     public static UNOServer DefaultUNOServer() throws IOException, UNOException {
         return new UNOServer(12345, 3);
     }
 
-    public int getConnectedPlayers() {
-        return connectedPlayers;
-    }
-
-    public void setConnectedPlayers(int n) {
-        connectedPlayers = n;
-    }
-
+    /**
+     * Erstellt einen ClientHandler und weist diesem einen Socket (client) hinzu
+     */
     private void assignClient() throws IOException, UNOException {
         Socket s = ss.accept();
         connectedPlayers++;
@@ -59,6 +64,9 @@ public class UNOServer {
         new Thread(ch).start();
     }
 
+    /**
+     * Sendet an alle verbundenen Clients eine Nachricht
+     */
     public void broadcast(String message) {
         for (ClientHandler ch : clients) {
             ch.write(message);
@@ -66,7 +74,17 @@ public class UNOServer {
         System.out.println("[@ALL] " + message);
     }
 
+    /** ### GETTER und SETTER ### */
+
     public int getMAX_PLAYERS() {
         return MAX_PLAYERS;
+    }
+
+    public int getConnectedPlayers() {
+        return connectedPlayers;
+    }
+
+    public void setConnectedPlayers(int n) {
+        connectedPlayers = n;
     }
 }

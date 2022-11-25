@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Die Klasse die für die erstellung vom Hauptfenster zuständig ist
+ */
 public class Window extends JFrame {
 
     public final static int HEIGHT = 700;
@@ -16,23 +19,24 @@ public class Window extends JFrame {
 
     public Frame frame;
 
+    /**
+     * Erstellt ein Fenster mit einem Frame
+     */
     public Window() throws IOException {
-        this.setTitle("ASD");
+        this.setTitle("UNO");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame = new Frame();
         this.add(frame);
         this.setSize(WIDTH, HEIGHT);
         this.setResizable(false);
         this.setIconImage(new BufferedImageLoader().loadImage("/icon.png"));
-//        this.pack();
         this.setVisible(true);
-    }
-
-    public static void main(String[] args) throws IOException {
-        new Window();
     }
 }
 
+/**
+ * Das Frame sorgt für das Malen vom Fenster
+ */
 class Frame extends JComponent {
     private final int[] player0;
     private final int[] player1;
@@ -44,10 +48,10 @@ class Frame extends JComponent {
     private final int CARD_SIZE_INDEX = 2;
     private SpriteSheet spriteSheet;
 
-    public SpriteSheet getSpriteSheet() {
-        return spriteSheet;
-    }
-
+    /**
+     * Konstruktor vom Frame
+     * initialisiert die Fenster Positionen von Spielern und decks
+     */
     public Frame() {
         init();
         int CARD_WINDOW_OFFSET = 12;
@@ -73,6 +77,9 @@ class Frame extends JComponent {
         };
     }
 
+    /**
+     * Initialisierung vom SpriteSheet
+     */
     public void init() {
         BufferedImageLoader loader = new BufferedImageLoader();
         try {
@@ -84,12 +91,18 @@ class Frame extends JComponent {
         }
     }
 
+    /**
+     * Methode zum Malen
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(drawScreen(Client.client.game),0,0,this);
     }
 
+    /**
+     * Malt das Fenster
+     */
     private BufferedImage drawScreen(Game game) {
         BufferedImage screen = new BufferedImage(Window.WIDTH, Window.HEIGHT, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = screen.createGraphics();
@@ -121,7 +134,7 @@ class Frame extends JComponent {
 
             BufferedImage oimg = rotate(resizeImage(spriteSheet.grabImage(0, 0)), -90.0);
 
-            for (int i = 0; i < game.getPlayer1().getHand().size(); i++) {
+            for (int i = 0; i < game.getPlayer2().getHand().size(); i++) {
                 g.drawImage(oimg, player2[0], player2[1] - (10 * CARD_SIZE_INDEX * cardsPerHalf), this);
                 cardsPerHalf--;
             }
@@ -141,6 +154,7 @@ class Frame extends JComponent {
         return screen;
     }
 
+    /** Vergrößert das gegebene Bild mithilfe der Variable CARD_SIZE_INDEX */
     private BufferedImage resizeImage(BufferedImage oimg) {
         BufferedImage rimg = new BufferedImage(oimg.getWidth() * CARD_SIZE_INDEX, oimg.getHeight() * CARD_SIZE_INDEX, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2 = rimg.createGraphics();
@@ -149,13 +163,16 @@ class Frame extends JComponent {
         return rimg;
     }
 
+    /**
+     * Dreht das Bild und gibt dieses aus
+     */
     public static BufferedImage rotate(BufferedImage bimg, Double angle) {
         double sin = Math.abs(Math.sin(Math.toRadians(angle))),
                 cos = Math.abs(Math.cos(Math.toRadians(angle)));
         int w = bimg.getWidth();
         int h = bimg.getHeight();
-        int neww = (int) Math.floor(w * cos + h * sin),
-                newh = (int) Math.floor(h * cos + w * sin);
+        int neww = (int) Math.floor(w * cos + h * sin);
+        int newh = (int) Math.floor(h * cos + w * sin);
         BufferedImage rotated = new BufferedImage(neww, newh, bimg.getType());
         Graphics2D graphic = rotated.createGraphics();
         graphic.translate((neww - w) / 2, (newh - h) / 2);
@@ -164,4 +181,11 @@ class Frame extends JComponent {
         graphic.dispose();
         return rotated;
     }
+
+    /** ### GETTER UND SETTER ### */
+
+    public SpriteSheet getSpriteSheet() {
+        return spriteSheet;
+    }
+
 }

@@ -1,5 +1,8 @@
 package net.Gruppe.uno.exceptions;
 
+/**
+ * Klasse die alle Custom Exceptions-Messages beinhaltet
+ */
 public enum UNOERR {
     CARD_MISSING_INDEX("No index given! Cannot create new Card!"), PACKAGE_INVALID_FORMAT("Given package format is invalid"),
     CANNOT_CREATE_CLIENT("CANNOT CREATE CLIENT"),
